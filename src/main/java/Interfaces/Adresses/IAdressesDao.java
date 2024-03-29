@@ -12,6 +12,9 @@ public interface IAdressesDao {
     void deleteAdresse(long id) throws SQLException;
 
     Adresse getPersonne(String nom)  throws SQLException;
+    Adresse getPersonneById(Long Id)  throws SQLException;
+
+
 
     Adresse getPersonneyIdCarnet(String nom,long id)   throws SQLException;
 
@@ -20,6 +23,8 @@ public interface IAdressesDao {
     void deleteAdresseByIdCarnet(long id) throws SQLException; // delete all adresses of a carnet
 
     List<Adresse> listerByCarnet(long idCarnet)  throws SQLException;
+
+    Boolean ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException;
 
 
 

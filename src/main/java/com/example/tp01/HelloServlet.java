@@ -117,7 +117,7 @@ public class HelloServlet extends HttpServlet {
             String numRue = req.getParameter("numRue");
             String ville = req.getParameter("ville");
             Long id = Long.parseLong(req.getParameter("carnetId"));
-            if(nom != null && nomRue != null && numRue != null || ville != null) {
+            if(nom != null && nomRue != null && numRue != null || ville != null && id != null) {
 
                 try {
                     metierAdresse.addAdresse(nom, nomRue, Integer.parseInt(numRue), ville, id);

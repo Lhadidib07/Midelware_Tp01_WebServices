@@ -1,6 +1,8 @@
 package com.example.tp01.Models;
 
-public class Personne {
+import java.io.Serializable;
+
+public class Personne implements Serializable {
     public String nom;
     public  String prenom;
     public int age;

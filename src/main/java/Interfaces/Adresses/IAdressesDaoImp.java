@@ -1,6 +1,5 @@
 package Interfaces.Adresses;
 
-import Interfaces.Adresses.IAdressesDao;
 import JDBC.SingletonConnection;
 import com.example.tp01.Models.Adresse;
 
@@ -165,4 +164,45 @@ public class IAdressesDaoImp implements IAdressesDao {
         return null;
     }
 
+    public Boolean ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException {
+        Connection connection = singletonConnection.getConnection();
+        System.out.println("je suis dans le dao modifier adresse" + nom + nomRue + numRue + ville + idCarnet + idPersonne);
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE adresse SET nomPersonne = ?, nomRue = ?, numRue = ?, ville = ? , idCarnet = ?  WHERE id = ?");
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, nomRue);
+            preparedStatement.setInt(3, numRue);
+            preparedStatement.setString(4, ville);
+            preparedStatement.setLong(5, idCarnet);
+
+            preparedStatement.setLong(6, idPersonne);
+
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Adresse getPersonneById(Long Id) throws SQLException {
+        Connection connection = singletonConnection.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM adresse WHERE id = ?");
+            preparedStatement.setString(1, String.valueOf(Id));
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                Adresse adresse = new Adresse();
+                adresse.setId(rs.getLong("id"));
+                adresse.setNomPersonne(rs.getString("nomPersonne"));
+                adresse.setNomRue(rs.getString("nomRue"));
+                adresse.setNumRue(rs.getInt("numRue"));
+                adresse.setNomVille(rs.getString("ville"));
+                adresse.setIdCarnet(rs.getLong("IdCarnet"));
+                return adresse;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

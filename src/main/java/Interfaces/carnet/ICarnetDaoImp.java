@@ -17,6 +17,8 @@ public class ICarnetDaoImp implements ICarnet {
         this.singletonConnection = singletonConnection;
     }
 
+
+
     @Override
     public void addCarnet(String nom) throws SQLException {
         Connection connection = singletonConnection.getConnection();
@@ -63,7 +65,8 @@ public class ICarnetDaoImp implements ICarnet {
 
 
     @Override
-    public Carnet getCarnetById(long id) throws SQLException{
+    public Carnet
+    getCarnetById(long id) throws SQLException{
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM carnet WHERE id LIKE ?");

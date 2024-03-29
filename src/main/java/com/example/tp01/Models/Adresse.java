@@ -1,8 +1,13 @@
 package com.example.tp01.Models;
 
-public class Adresse {
+import java.io.Serializable;
+
+public class Adresse implements Serializable {
 
     long id ;
+
+    long idCarnet; // id du carnet
+
     private String nomPersonne;
 
     private String nomRue;
@@ -10,19 +15,21 @@ public class Adresse {
 
     private String nomVille;
 
-    public Adresse(String nomPersonne,String nomRue,int numRue ,String nomVille){
+
+    public Adresse(String nomPersonne, String nomRue, int numRue , String nomVille){
         this.nomPersonne = nomPersonne;
         this.nomRue = nomRue;
         this.numRue= numRue;
         this.nomVille = nomVille;
     }
 
-    public Adresse(long id, String nomPersonne,String nomRue,int numRue ,String nomVille){
+    public Adresse(long id, String nomPersonne,String nomRue,int numRue ,String nomVille,long idCarnet){
         this.id = id;
         this.nomPersonne = nomPersonne;
         this.nomRue = nomRue;
         this.numRue= numRue;
         this.nomVille = nomVille;
+        this.idCarnet = idCarnet;
     }
 
     public Adresse() {
@@ -80,6 +87,14 @@ public class Adresse {
                 ", numRue=" + numRue +
                 ", nomVille='" + nomVille + '\'' +
                 '}';
+    }
+
+    public long getIdCarnet() {
+        return idCarnet;
+    }
+
+    public void setIdCarnet(long idCarnet) {
+        this.idCarnet = idCarnet;
     }
 
 

@@ -17,6 +17,7 @@
             <a href="/carnet" class="mx-5 text-white hover:text-gray-200">Carnets Gestion</a>
         </header>
         <div class="container mx-auto px-4">
+
         <%
                 Carnet carnet = (Carnet) request.getAttribute("carnet");
         %>
@@ -121,7 +122,7 @@
                 </div>
             </div>
 
-            <!-- Form to add a new Cours -->
+
             <div class="flex items-center justify-center px-12">
                 <div class="mx-auto w-full max-w-[550px]">
                     <h1 class="text-3xl font-bold mb-4 text-center">Ajouter adresse</h1>
@@ -230,7 +231,6 @@
                 </div>
             </div>
 
-            <!-- List of Cours -->
 
 
             <div class="flex flex-col">
@@ -296,6 +296,10 @@
                                                 Delete
                                             </button>
                                         </form>
+                                        <a href="/modification?id=<%=adr.getId()%>"
+                                           class="bg-blue-600 hover:bg-green-500 transition-all duration-200 px-3 py-1 text-white rounded-md">
+                                            modifier
+                                        </a>
                                     </td>
                                 </tr>
                                 <%
