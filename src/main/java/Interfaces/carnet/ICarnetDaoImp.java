@@ -20,7 +20,7 @@ public class ICarnetDaoImp implements ICarnet {
 
 
     @Override
-    public void addCarnet(String nom) throws SQLException {
+    public synchronized void addCarnet(String nom) throws SQLException {
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO carnet (nom) VALUES (?)");
@@ -32,7 +32,7 @@ public class ICarnetDaoImp implements ICarnet {
     }
 
     @Override
-    public void deleteCarnet(long id) throws SQLException {
+    public synchronized void deleteCarnet(long id) throws SQLException {
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("DELETE FROM carnet WHERE id = ?");
@@ -45,7 +45,7 @@ public class ICarnetDaoImp implements ICarnet {
     }
 
     @Override
-    public Carnet getCarnet(String nom) throws SQLException {
+    public synchronized Carnet getCarnet(String nom) throws SQLException {
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM carnet WHERE nom LIKE ?");
@@ -65,8 +65,7 @@ public class ICarnetDaoImp implements ICarnet {
 
 
     @Override
-    public Carnet
-    getCarnetById(long id) throws SQLException{
+    public synchronized  Carnet getCarnetById(long id) throws SQLException{
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM carnet WHERE id LIKE ?");
@@ -87,7 +86,7 @@ public class ICarnetDaoImp implements ICarnet {
 
 
     @Override
-    public List<Carnet> lister() throws SQLException {
+    public synchronized List<Carnet> lister() throws SQLException {
         Connection connection = singletonConnection.getConnection();
         List<Carnet> list = new ArrayList<>();
         try {

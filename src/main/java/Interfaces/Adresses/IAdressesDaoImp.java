@@ -18,7 +18,7 @@ public class IAdressesDaoImp implements IAdressesDao {
         this.singletonConnection = singletonConnection;
     }
     @Override
-    public void addAdresse(String nom, String nomRue, int numRue, String ville, long IdCarnet) throws SQLException {
+    public synchronized void addAdresse(String nom, String nomRue, int numRue, String ville, long IdCarnet) throws SQLException {
         System.out.println("addAdresse" + nom + nomRue + numRue + ville +" dans le carnet id : " + IdCarnet);
         Connection connection = singletonConnection.getConnection();
         try {
@@ -36,7 +36,7 @@ public class IAdressesDaoImp implements IAdressesDao {
     }
 
     @Override
-    public void deleteAdresse(long id) {
+    public synchronized void deleteAdresse(long id) {
         // TODO Auto-generated method stub
         Connection connection = singletonConnection.getConnection();
         try {
@@ -49,7 +49,7 @@ public class IAdressesDaoImp implements IAdressesDao {
     }
 
     @Override
-    public List<Adresse> lister() {
+    public synchronized List<Adresse> lister() {
         // TODO Auto-generated method stub
         Connection connection = singletonConnection.getConnection();
         List<Adresse> list = new ArrayList<>(); // liste des adresses
@@ -75,7 +75,7 @@ public class IAdressesDaoImp implements IAdressesDao {
     }
 
     @Override
-    public Adresse getPersonne(String nom) {
+    public synchronized Adresse getPersonne(String nom) {
         // TODO Auto-generated method stub
         Connection connection = singletonConnection.getConnection();
         try {
@@ -101,7 +101,7 @@ public class IAdressesDaoImp implements IAdressesDao {
         return null;
     }
 
-    public Adresse getPersonneyIdCarnet(String nom, long id) throws SQLException {
+    public synchronized Adresse getPersonneyIdCarnet(String nom, long id) throws SQLException {
         // TODO Auto-generated method stub
         Connection connection = singletonConnection.getConnection();
         try {
@@ -128,7 +128,7 @@ public class IAdressesDaoImp implements IAdressesDao {
         return null;
     }
 
-    public void deleteAdresseByIdCarnet(long id) throws SQLException {
+    public synchronized void deleteAdresseByIdCarnet(long id) throws SQLException {
         // TODO Auto-generated method stub
         Connection connection = singletonConnection.getConnection();
         try {
@@ -140,7 +140,7 @@ public class IAdressesDaoImp implements IAdressesDao {
         }
     }
 
-    public List<Adresse> listerByCarnet(long idCarnet) {
+    public synchronized List<Adresse> listerByCarnet(long idCarnet) {
         Connection connection = singletonConnection.getConnection();
         List<Adresse> list = new ArrayList<>();
         try{
@@ -164,7 +164,7 @@ public class IAdressesDaoImp implements IAdressesDao {
         return null;
     }
 
-    public Boolean ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException {
+    public synchronized Boolean ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException {
         Connection connection = singletonConnection.getConnection();
         System.out.println("je suis dans le dao modifier adresse" + nom + nomRue + numRue + ville + idCarnet + idPersonne);
         try {
@@ -184,7 +184,7 @@ public class IAdressesDaoImp implements IAdressesDao {
     }
 
     @Override
-    public Adresse getPersonneById(Long Id) throws SQLException {
+    public synchronized Adresse getPersonneById(Long Id) throws SQLException {
         Connection connection = singletonConnection.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM adresse WHERE id = ?");

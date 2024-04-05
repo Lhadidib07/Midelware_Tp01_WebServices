@@ -7,24 +7,22 @@ import java.util.List;
 
 public interface IAdressesDao {
 
-    void addAdresse(String nom, String nomRue, int numRue, String ville, long IdCarnet) throws SQLException;
+    void  addAdresse(String nom, String nomRue, int numRue, String ville, long IdCarnet) throws SQLException;
 
-    void deleteAdresse(long id) throws SQLException;
+    void  deleteAdresse(long id) throws SQLException;
 
-    Adresse getPersonne(String nom)  throws SQLException;
-    Adresse getPersonneById(Long Id)  throws SQLException;
+    Adresse  getPersonne(String nom)  throws SQLException;
+    Adresse  getPersonneById(Long Id)  throws SQLException;
 
+    Adresse  getPersonneyIdCarnet(String nom,long id)   throws SQLException;
 
+    List<Adresse>  lister()  throws SQLException;
 
-    Adresse getPersonneyIdCarnet(String nom,long id)   throws SQLException;
+    void  deleteAdresseByIdCarnet(long id) throws SQLException; // delete all adresses of a carnet
 
-    List<Adresse> lister()  throws SQLException;
+    List<Adresse>  listerByCarnet(long idCarnet)  throws SQLException;
 
-    void deleteAdresseByIdCarnet(long id) throws SQLException; // delete all adresses of a carnet
-
-    List<Adresse> listerByCarnet(long idCarnet)  throws SQLException;
-
-    Boolean ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException;
+    Boolean  ModifierAdresse(String nom, String nomRue, int numRue, String ville,Long idCarnet, long idPersonne) throws SQLException;
 
 
 
