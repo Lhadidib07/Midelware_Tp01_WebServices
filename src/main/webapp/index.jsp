@@ -9,7 +9,7 @@
 </head>
 <body class="antialiased h-full w-full">
 <header class="bg-blue-500 p-4 flex justify-center">
-    <a href="/" class="mx-5 text-white hover:text-gray-200">Homme</a>
+    <a href="/" class="mx-5 text-white hover:text-gray-200">Home</a>
     <a href="/liste" class="mx-5 text-white hover:text-gray-200">Adresses Gestion</a>
     <a href="/carnet" class="mx-5 text-white hover:text-gray-200">Carnets Gestion</a>
 </header>
